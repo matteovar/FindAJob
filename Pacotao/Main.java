@@ -43,10 +43,10 @@ public class Main {
         System.out.println("Quadras disponíveis: " + quadra.cadastarQuadras());
         quadra.selecionarQuadras("Quadra 1", "Segunda-feira", "10:00");
         System.out.println("Horários disponíveis para a Quadra 1 na Segunda-feira: " + quadra.horariosDisponiveis("Quadra 1", "Segunda-feira"));
-        
+        System.err.println("\n");
         System.out.println("Quadras disponíveis: " + quadra.cadastarQuadras());
         quadra.selecionarQuadras("Quadra 1", "Segunda-feira", "10:00");
         System.out.println("Horários disponíveis para a Quadra 1 na Segunda-feira: " + quadra.horariosDisponiveis("Quadra 1", "Segunda-feira"));
-
+        System.err.println("\n");
       }
 }
