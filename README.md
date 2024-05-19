@@ -1,5 +1,8 @@
+<h1>-------AAAAAA </h1>
+
 <h1>To do </h1>
-<p>Arrumar o diagrama de classe (Jonatas)</p>
-<p>Pensar na logica da quadra de cadastrar e selecionar as quadras </p>
+<p>Ver melhor como funciona o Maven</p>
+<p>Lapidar o programa </p>
+<p>Pensar no github Actions</p>
 
 - Por enquanto é isso ;)
