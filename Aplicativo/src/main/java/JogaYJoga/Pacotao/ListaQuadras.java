@@ -50,5 +50,13 @@ public class ListaQuadras {
        }
    }
    
-   
+   public void exibirValor(int posicao){
+        int tamanho = listaOpcoes.size();
+        for (int i =0; i<tamanho; i++){
+            if (posicao == i){
+                System.out.println(listaOpcoes.get(i).getValor());
+            }
+        }
+    }
+
 }

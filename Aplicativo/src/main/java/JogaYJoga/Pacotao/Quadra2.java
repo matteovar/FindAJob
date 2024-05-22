@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package JogaYJoga.Pacotao;
+import java.util.ArrayList;
 
 public class Quadra2 {
     private String nome;
     private String descricao;
     private String dias;
     private String horarios;
+    private String valor;
 
-    public Quadra2(String nome, String descricao, String dias, String horarios) {
+    public Quadra2(String nome, String descricao, String dias, String horarios, String valor) {
         this.nome = nome;
         this.descricao = descricao;
         this.dias = dias;
         this.horarios = horarios;
+        this.valor = valor;
     }
 
     
@@ -46,8 +49,13 @@ public class Quadra2 {
         this.horarios = Horarios;
     }
     
-    
-    
+    public String getValor(){
+        return valor;
+    }
+
+    public void setValor(String valor){
+        this.valor = valor;
+    }
     
             
    

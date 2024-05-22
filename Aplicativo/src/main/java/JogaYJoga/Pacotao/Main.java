@@ -37,12 +37,15 @@ public static void clear(){
         
         System.out.println("\n->Descrição: ");
         lista_quadras.exibirDescricaoQuadras(numero_quadra);
-        System.out.println("Valor |    |    [9] Confirmar  [1]Voltar");
+        System.out.println("Valor:");
+        lista_quadras.exibirValor(numero_quadra) ;
+        System.out.println("[9] Confirmar  [1]Voltar");
         resposta = teclado.nextInt();
         if (resposta == 9){
             System.out.println("Dias Disponíveis");
             lista_quadras.exibirDiasDisponiveis(numero_quadra);
         }
+        
         
       }
    } 
@@ -83,10 +86,12 @@ public static void clear(){
             }
             
             if(resposta == 4){
-                Quadra2 quadraExemplo = new Quadra2("Quadra Futset Pinheiros","Esta quadra é absurdamente legal","1,2,3","18:00");
+                Quadra2 quadraExemplo = new Quadra2("Quadra Futset Pinheiros","Esta quadra é absurdamente legal","1,2,3","18:00, 19:00","R$100.00");
+                Quadra2 quadraExemplo2 = new Quadra2("Quadra do Limas","Venha se aventurar na nossa quadra","5,6,10","13:00, 20:00","R$100.00");
                 lista_quadras.adicionarQuadras(quadraExemplo);
+                lista_quadras.adicionarQuadras(quadraExemplo2);
                 System.out.println("Quadra: == " + quadraExemplo.getNome()+" == Adicionada");
-                clear();
+                
             }
         }   
         menu(lista_quadras);
@@ -94,7 +99,7 @@ public static void clear(){
 
    public static void menu(ListaQuadras lista_quadras){
       Cliente cliente1 = new Cliente("Jônatas", "XXX.XXX.XXX.XXX", "@bol", "120");
-      Locador locador1 = new Locador("Beach Sports", "@bol", "321", "bb");
+      Locador locador1 = new Locador("Beach Sports", "@gmail", "321", "bb");
       Scanner teclado = new Scanner(System.in);
       
       //Estou supondo que o login é o mesmo
