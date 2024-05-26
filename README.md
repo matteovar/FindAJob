@@ -1,10 +1,12 @@
 <h1>To do </h1>
 
-<p>Lapidar o programa </p>
--Adicionar Lista de dias e lista de horarios
--Adicionar metodo de pagamento
+<p>ENTREGAR  </p>
+-Arrumar o diagrama de classe para o que o professor passou
+-Configurar o GitHub Actions
+-Arrumar a documentação explicando como funciona e como usar o Maven no projeto
+-Arrumar Bugs (Se der,o ideal é focar nos de cima)
 
-<p>Ver melhor como funciona o Maven</p>
-<p>Pensar no github Actions</p>
 
-- Por enquanto é isso ;)
+
+
+
