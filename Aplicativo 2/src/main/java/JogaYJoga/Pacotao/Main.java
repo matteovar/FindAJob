@@ -38,7 +38,7 @@ public class Main {
 
             clear();
             if (resposta == 1) {
-                menu(listaQuadras);
+                return; // Voltar ao menu principal
             } else if (resposta == 2) {
                 System.out.println("--> Exibindo Lista de Quadras:");
                 listaQuadras.exibirNomeQuadras();
@@ -105,7 +105,7 @@ public class Main {
         int resposta = 0;
         System.out.println("===*** Olá " + locador.getNome() + " ***===");
 
-        while (resposta != 1) {
+        while (true) {
             System.out.println("\nSelecione uma opção: ");
             System.out.println("[1] Voltar ao inicio \n[2] Meus Locais \n[3] Verificar agenda \n[4] Cadastrar novo local");
             resposta = teclado.nextInt();
@@ -116,7 +116,7 @@ public class Main {
 
             clear();
             if (resposta == 1) {
-                menu(listaQuadras);
+                return; // Voltar ao menu principal
             } else if (resposta == 2) {
                 System.out.println("--> Exibindo locais:");
                 listaQuadras.exibirNomeQuadras();
@@ -146,22 +146,45 @@ public class Main {
                     }
                 }
             } else if (resposta == 4) {
-                Map<LocalDate, ArrayList<String>> diasHorarios = new HashMap<>();
-                ArrayList<String> horariosDia1 = new ArrayList<>();
-                ArrayList<String> horariosDia2 = new ArrayList<>();
-                horariosDia1.add("08:00 - 09:00");
-                horariosDia1.add("10:00 - 11:00");
-                horariosDia2.add("09:00 - 10:00");
-                horariosDia2.add("10:00 - 11:00");
-                diasHorarios.put(LocalDate.of(2024, 5, 31), horariosDia1);
-                diasHorarios.put(LocalDate.of(2024, 5, 30), horariosDia2);
-
-                Quadra2 novaQuadra = new Quadra2("futset", "Quadra muito legal", diasHorarios, "110");
-                listaQuadras.adicionarQuadras(novaQuadra);;
-
-                System.out.println("Quadra: == " + novaQuadra.getNome() + " == Adicionada com sucesso");
+                System.out.println("Digite o nome da nova quadra:");
+                teclado.nextLine(); // consume the newline left-over
+                String nome = teclado.nextLine();
+            
+                if (quadraJaAdicionada(listaQuadras, nome)) {
+                    System.out.println("Esta quadra já foi adicionada anteriormente.");
+                } else {
+                    System.out.println("Digite a descrição da nova quadra:");
+                    String descricao = teclado.nextLine();
+                    System.out.println("Digite o valor da nova quadra:");
+                    String valor = teclado.nextLine();
+            
+                    Map<LocalDate, ArrayList<String>> diasHorarios = new HashMap<>();
+                    ArrayList<String> horariosDia1 = new ArrayList<>();
+                    ArrayList<String> horariosDia2 = new ArrayList<>();
+                    horariosDia1.add("08:00 - 09:00");
+                    horariosDia1.add("10:00 - 11:00");
+                    horariosDia2.add("09:00 - 10:00");
+                    horariosDia2.add("10:00 - 11:00");
+                    diasHorarios.put(LocalDate.of(2024, 5, 31), horariosDia1);
+                    diasHorarios.put(LocalDate.of(2024, 5, 30), horariosDia2);
+            
+                    Quadra2 novaQuadra = new Quadra2(nome, descricao, diasHorarios, valor);
+                    listaQuadras.adicionarQuadras(novaQuadra);
+            
+                    System.out.println("Quadra: == " + novaQuadra.getNome() + " == Adicionada com sucesso");
+                }
             }
         }
+    }
+
+    public static boolean quadraJaAdicionada(ListaQuadras listaQuadras, String nomeQuadra) {
+        for (int i = 0; i < listaQuadras.tamanho(); i++) {
+            Quadra2 quadra = listaQuadras.getQuadra(i);
+            if (quadra.getNome().equalsIgnoreCase(nomeQuadra)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void menu(ListaQuadras listaQuadras) {
@@ -171,16 +194,19 @@ public class Main {
 
         while (true) {
             System.out.println("------ JOGA Y JOGA Y --------");
-            int resposta = 0;
-            while (resposta != 1 && resposta != 2) {
-                System.out.print("Selecione uma opção: \n[1] Cliente [2] Locador\n--> ");
-                resposta = teclado.nextInt();
-            }
+            System.out.print("Selecione uma opção: \n[1] Cliente \n[2] Locador \n[3] Sair\n--> ");
+            int resposta = teclado.nextInt();
+            
             clear();
             if (resposta == 1) {
                 operacoesCliente(cliente1, listaQuadras);
-            } else {
+            } else if (resposta == 2) {
                 operacoesLocador(locador1, listaQuadras);
+            } else if (resposta == 3) {
+                System.out.println("Obrigado por usar o JogaYJoga");
+                break; // Sair do loop e terminar o programa
+            } else {
+                System.out.println("Opção inválida. Tente novamente.");
             }
         }
     }
