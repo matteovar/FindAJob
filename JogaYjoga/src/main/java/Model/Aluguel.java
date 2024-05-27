@@ -1,37 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
-
-
-
 public class Aluguel {
-    private int Id;
     private Cliente cliente;
     private Quadra quadra;
-    private String valor;
-    private String data;
-    
-   
-    public Aluguel(int Id,Quadra quadra, String valor, String data) {
-        this.Id = Id;
-        this.quadra = quadra;
-        this.valor = valor;
-        this.data = data;
-    }
-    
-    public Aluguel(int Id, Cliente cliente, Quadra quadra, String valor, String data) {
-        this.Id = Id;
+    private Agendas agendas;
+    //precisa arrumar essa parte
+
+    public Aluguel(Cliente cliente, Quadra quadra, Agendas agendas) {
         this.cliente = cliente;
         this.quadra = quadra;
-        this.valor = valor;
-        this.data = data;
-    }
-
-    public int getId() {
-        return Id;
+        this.agendas = agendas;
     }
 
     public Cliente getCliente() {
@@ -42,30 +20,14 @@ public class Aluguel {
         return quadra;
     }
 
-    public String getValor() {
-        return valor;
+    public Agendas getAgendas(){
+        return agendas;
     }
 
-    public String getData() {
-        return data;
+    public void exibirDetalhes() {
+        System.out.println("Detalhes do Aluguel:");
+        System.out.println("Cliente: " + cliente.getNome());
+        System.out.println("Quadra: " + quadra.getNome());
+        System.out.println("Data: " + agendas.getDiasHorarios());
     }
-
-   
-    
-    public String exibirDetalhes() {
-        StringBuilder detalhes = new StringBuilder();
-        detalhes.append("Detalhes do Aluguel:");
-        //detalhes.append("Cliente: ").append( cliente.getNome());
-        detalhes.append(  "\nQuadra: " ).append( quadra.getNome());
-        detalhes.append(  "\nData: " ).append( this.data);
-        return detalhes.toString();
-    }
-    
-    
-    //Reservar Horário
-    
-    
-    
-    //Mostar status
-
 }

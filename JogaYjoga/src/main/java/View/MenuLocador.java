@@ -1,54 +1,62 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
-import Controller.MenuLocadorController;
+
+import Controller.*;
+import Model.*;
+
 import java.util.Scanner;
 
 public class MenuLocador {
-    private int opcao;
-    private String nome;
-    
-    private final MenuLocadorController controller;
-    
-    public MenuLocador(String nome){
-        this.controller = new MenuLocadorController(this);
-        this.nome = nome;
-        
+    private final Locador locador;
+    private final OperacoesLocador controller;
+    private final ListaQuadras listaQuadras;
+
+    public MenuLocador(String nome, String email, String senha, String cnpj, ListaQuadras listaQuadras) {
+        this.locador = new Locador(nome, email, senha, cnpj);
+        this.controller = new OperacoesLocador(this);
+        this.listaQuadras = listaQuadras; // Usar a mesma instância passada como parâmetro
     }
-    
-    public void inicia(){
+
+    public void inicia() {
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Bem vindo de volta ");
-        System.out.println("[1] Voltar ao inicio \n[2] Meus Locais \n[3] Verificar agenda \n[4] Cadastrar novo Local");
-        opcao = teclado.nextInt();
-        controller.navegacao();
-        //controller.navegarParaAgenda();
+        System.out.println("===*** Olá " + locador.getNome() + " ***===");
+        boolean voltarMenuPrincipal = false;
+        while (!voltarMenuPrincipal) {
+            System.out.println("\nSelecione uma opção: ");
+            System.out.println("[1] Voltar ao inicio \n[2] Meus Locais \n[3] Verificar agenda \n[4] Cadastrar novo Local");
+            int opcao = teclado.nextInt();
+            while (opcao < 1 || opcao > 4) {
+                System.out.print("Digite uma opção válida: ");
+                opcao = teclado.nextInt();
+            }
+            Main.clear();
+            voltarMenuPrincipal = controller.navegar(opcao, locador, listaQuadras);
+        }
     }
-    
-    public void exibirLocais(){
-        
+
+    public void exibirLocais(ListaQuadras listaQuadras) {
+        for (int i = 0; i < listaQuadras.tamanho(); i++) {
+            Quadra quadra = listaQuadras.getQuadra(i);
+            System.out.println("Local: " + quadra.getNome());
+        }
     }
-    public void exibirMensagem(String mensagem){
+
+    public void exibirAgenda(ListaQuadras listaQuadras) {
+        for (int i = 0; i < listaQuadras.tamanho(); i++) {
+            Quadra quadra = listaQuadras.getQuadra(i);
+            System.out.println("Agenda para a quadra: " + quadra.getNome());
+            quadra.getDiasHorarios().forEach((data, horarios) -> {
+                System.out.println("Data: " + data);
+                if (horarios.isEmpty()) {
+                    System.out.println("  Todos os horários estão reservados.");
+                } else {
+                    System.out.println("  Horários disponíveis: " + horarios);
+                }
+            });
+            System.out.println();
+        }
+    }
+
+    public void exibirMensagem(String mensagem) {
         System.out.println(mensagem);
     }
-
-    
-    public int getOpcao() {
-        return opcao;
-    }
-
-    public void setOpcao(int opcao) {
-        this.opcao = opcao;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
 }

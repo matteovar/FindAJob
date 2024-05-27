@@ -1,11 +1,9 @@
 package View;
-import Controller.LoginController;
-import Model.Aluguel;
+
+import Model.*;
+
 import java.util.Scanner;
-import Model.Cliente;
-import Model.Locador;
-import Model.Quadra;
- 
+
 public class Main {
     public static void clear() {
         try {
@@ -19,29 +17,36 @@ public class Main {
             System.out.println(e);
         }
     }
-    
-    
-  
-    public static void main(String[] args) {
+
+    public static void menu(ListaQuadras listaQuadras) {
+        Cliente cliente1 = new Cliente("Jônatas", "XXX.XXX.XXX.XXX", "@bol", "120");
+        Locador locador1 = new Locador("Beach Sports", "@gmail", "321", "bb");
         Scanner teclado = new Scanner(System.in);
-        Quadra quadra1 =  new Quadra("Futset Pinheiros","Quadra Localizada em pinheiros ",null,"100R$");
-        Cliente cliente = new Cliente("Jonatas","394", "@bol", "123");
-        Locador locador = new Locador("Beach Sports","@gmail","321","bb");
-        //Aluguel aluguel = new Aluguel(1, cliente, quadra1, "100", "13/04/2001 13");
-        //System.out.println(aluguel.getQuadra().getNome()+" Alugada em "+aluguel.getData());
-        System.out.println("Selecione: [1]Cliente [2]Locador");
-        int resposta = teclado.nextInt();
-        if(resposta == 1){
-            System.out.println("Usuário: "+cliente.getNome());
-            Login log = new Login(cliente.getNome(),cliente.getSenha());
-            log.entrar(cliente.getNome(),cliente.getSenha());
-        }else if(resposta == 2){
-            System.out.println("Locador: "+locador.getNome());
-            Login log1 = new Login(locador.getNome(),locador.getSenha());
-            log1.entrar(locador.getNome(),locador.getSenha());
+
+        while (true) {
+            System.out.println("------ JOGA Y JOGA Y --------");
+            System.out.print("Selecione uma opção: \n[1] Cliente \n[2] Locador \n[3] Sair\n--> ");
+            int resposta = teclado.nextInt();
+
+            clear();
+            if (resposta == 1) {
+                MenuCliente menuCliente = new MenuCliente(cliente1.getNome(), cliente1.getCpf(), cliente1.getEmail(), cliente1.getSenha(), listaQuadras);
+                menuCliente.inicia();
+            } else if (resposta == 2) {
+                MenuLocador menuLocador = new MenuLocador(locador1.getNome(), locador1.getEmail(), locador1.getSenha(), locador1.getCnpj(), listaQuadras);
+                menuLocador.inicia();
+            
+            } else if (resposta == 3) {
+                System.out.println("Obrigado por usar o JogaYJoga");
+                break; // Sair do loop e terminar o programa
+            } else {
+                System.out.println("Opção inválida. Tente novamente.");
+            }
         }
-        
     }
 
-    
+    public static void main(String[] args) {
+        ListaQuadras listaQuadras = new ListaQuadras();
+        menu(listaQuadras);
+    }
 }

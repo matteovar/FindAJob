@@ -1,28 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
-
-
-
+import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.Map;
 
 public class Quadra {
     private String nome;
     private String descricao;
-    private ArrayList<String> agenda;
+    private Map<LocalDate, ArrayList<String>> diasHorarios;
     private String valor;
-    //private ArrayList<Quadra> lista;
 
-    
-    
-    public Quadra(String nome, String descricao,ArrayList<String> agenda, String valor) {
+    public Quadra(String nome, String descricao, Map<LocalDate, ArrayList<String>> diasHorarios, String valor) {
         this.nome = nome;
         this.descricao = descricao;
-        this.agenda = agenda;
+        this.diasHorarios = diasHorarios;
         this.valor = valor;
     }
 
@@ -42,12 +33,12 @@ public class Quadra {
         this.descricao = descricao;
     }
 
-    public ArrayList<String> getDiasHorarios() {
-        return agenda;
+    public Map<LocalDate, ArrayList<String>> getDiasHorarios() {
+        return diasHorarios;
     }
 
-    public void setDiasHorarios(ArrayList<String> agenda) {
-        this.agenda = agenda;
+    public void setDiasHorarios(Map<LocalDate, ArrayList<String>> diasHorarios) {
+        this.diasHorarios = diasHorarios;
     }
 
     public String getValor() {
@@ -57,6 +48,18 @@ public class Quadra {
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
-}
 
+    public ArrayList<String> getHorariosDisponiveis(LocalDate data) {
+        return diasHorarios.getOrDefault(data, new ArrayList<>());
+    }
+
+    public boolean reservarHorario(LocalDate data, String horario) {
+        ArrayList<String> horarios = diasHorarios.get(data);
+        if (horarios != null && horarios.contains(horario)) {
+            horarios.remove(horario);
+            diasHorarios.put(data, horarios);
+            return true;
+        }
+        return false;
+    }
+}
