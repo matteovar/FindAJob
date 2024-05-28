@@ -1,9 +1,12 @@
 <h1>Integrantes </h1>
 
-<p>Jônatas Garcia de Oiveiria 10396490 Reponsável por operação Locador,Verificar Agenda<p>
-<p>Matteo <p>
-<p>André <p>
-<p>Mateo 0<p>
+<p>Jônatas Garcia de Oiveiria 10396490<br> 
+  Trabalhou em:  Controller Locador,View Locador,Verificar quadras Cadastradas<p>
+<p>Matteo <br>
+  Trabalhou em: Operação Client,Verificar agenda, Alugar quadra <p>
+<p>André <br>
+  Operação Locador cadastrar quadra<p>
+<p>Mateo Operação Cliente <p>
 
 <p>Intruções de compilção </p>
 
