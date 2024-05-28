@@ -36,6 +36,12 @@ public class Agendas {
         return diasHorarios.getOrDefault(data, new ArrayList<>());
     }
     
+    public String getHorariosDisponiveis(){
+        StringBuilder dias = new StringBuilder();
+        dias.append(diasHorarios.toString());
+        return dias.toString();
+    }
+    
     public String getHorariosReservados(){
         StringBuilder horarios = new StringBuilder();
         if(horariosReservados.isEmpty() ){

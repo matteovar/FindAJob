@@ -2,11 +2,13 @@ package Controller;
 
 import Model.*;
 import View.*;
+import java.util.Scanner;
 
 public class OperacoesCliente {
     private final MenuCliente view;
     private ListaQuadras quadrasAlocadas;
     private final QuadraView quadraView;
+    
     
     private Cliente cliente;
 
@@ -35,9 +37,13 @@ public class OperacoesCliente {
             } else {  
                 view.exibirMensagem("Quadras Disponíveis: ");
                 quadraView.exibirNomeQuadras(quadrasAlocadas);
-   
-                view.exibirMensagem("Pegar as quadras e fazer a lógica que tava antes,só que eu me enrolei ");
-                //view.reservarQuadras();
+                
+                System.out.println("Digite o numero");
+                Scanner teclado = new Scanner(System.in);
+                int resposta = teclado.nextInt();
+                view.exibirMensagem("Exibindo Agenda");
+                view.exibirMensagem(quadrasAlocadas.getQuadra(resposta).getAgenda().getHorariosDisponiveis());
+                
             }
         }
         return false; // Não voltar ao menu principal
