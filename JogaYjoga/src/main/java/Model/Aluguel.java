@@ -28,6 +28,6 @@ public class Aluguel {
         System.out.println("Detalhes do Aluguel:");
         System.out.println("Cliente: " + cliente.getNome());
         System.out.println("Quadra: " + quadra.getNome());
-        System.out.println("Data: " + agendas.getDiasHorarios());
+        System.out.println("Data: " + Agendas.getDiasHorarios());
     }
 }
