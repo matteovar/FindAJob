@@ -2,7 +2,7 @@
 
 <p>Jônatas Garcia de Oiveiria 10396490<br> 
   Trabalhou em:  Controller Locador,View Locador,Verificar quadras Cadastradas<p>
-<p>Matteo <br>
+<p>Matteo Domiciano Varnier 10390247 <br>
   Trabalhou em: Operação Client,Verificar agenda, Alugar quadra <p>
 <p>André <br>
   Operação Locador cadastrar quadra<p>
