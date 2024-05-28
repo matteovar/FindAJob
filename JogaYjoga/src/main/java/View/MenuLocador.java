@@ -6,12 +6,12 @@ import Model.*;
 import java.util.Scanner;
 
 public class MenuLocador {
-    private final Locador locador;
+    private Locador locador;
     private final OperacoesLocador controller;
     private final ListaQuadras listaQuadras;
 
     public MenuLocador(String nome, String email, String senha, String cnpj, ListaQuadras listaQuadras) {
-        this.locador = new Locador(nome, email, senha, cnpj);
+        this.locador = new Locador(nome, email, senha, cnpj, listaQuadras);
         this.controller = new OperacoesLocador(this);
         this.listaQuadras = listaQuadras; // Usar a mesma instância passada como parâmetro
     }
@@ -36,7 +36,7 @@ public class MenuLocador {
     public void exibirLocais(ListaQuadras listaQuadras) {
         for (int i = 0; i < listaQuadras.tamanho(); i++) {
             Quadra quadra = listaQuadras.getQuadra(i);
-            System.out.println("Local: " + quadra.getNome());
+            System.out.println(quadra.getNome());
         }
     }
 
@@ -54,6 +54,10 @@ public class MenuLocador {
             });
             System.out.println();
         }
+    }
+
+    public Locador getLocador() {
+        return this.locador;
     }
 
     public void exibirMensagem(String mensagem) {

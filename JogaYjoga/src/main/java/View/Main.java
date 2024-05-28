@@ -20,7 +20,7 @@ public class Main {
 
     public static void menu(ListaQuadras listaQuadras) {
         Cliente cliente1 = new Cliente("Jônatas", "XXX.XXX.XXX.XXX", "@bol", "120");
-        Locador locador1 = new Locador("Beach Sports", "@gmail", "321", "bb");
+        Locador locador1 = new Locador("Beach Sports", "@gmail", "321", "bb", null);
         Scanner teclado = new Scanner(System.in);
 
         while (true) {

@@ -22,10 +22,12 @@ public class ListaQuadras {
         listaOpcoes.add(quadra);
     }
 
-    public void exibirNomeQuadras() {
+    public String exibirNomeQuadras() {
+        StringBuilder nome = new StringBuilder();
         for (int i = 0; i < listaOpcoes.size(); i++) {
-            System.out.println("[" + i + "] " + listaOpcoes.get(i).getNome());
+            nome.append(listaOpcoes.get(i).getNome());
         }
+        return nome.toString();
     }
 
     public Quadra getQuadra(int posicao) {
