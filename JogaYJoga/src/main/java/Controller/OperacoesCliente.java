@@ -9,8 +9,6 @@ public class OperacoesCliente {
     private final MenuCliente view;
     private ListaQuadras quadrasAlocadas;
     private final QuadraView quadraView;
-    
-    
     private Cliente cliente;
 
     public OperacoesCliente(MenuCliente view) {
@@ -30,9 +28,7 @@ public class OperacoesCliente {
                 view.exibirMensagem("Não há locais cadastrados");
             } else {
                 view.exibirMensagem("Exibindo locais:");
-                view.exibirMensagem(cliente.exibirInformacoes());
-                
-                //view.exibirDetalhesQuadra(Aluguel.exibirDetalhes().);
+                view.exibirDetalhesQuadra(quadrasAlocadas);
             }
         } else if (opcao == 3) {
             if (quadrasAlocadas.tamanho() == 0) {
@@ -47,18 +43,16 @@ public class OperacoesCliente {
                 view.exibirMensagem("Exibindo Agenda");
                 view.exibirMensagem(quadrasAlocadas.getQuadra(resposta).getAgenda().getHorariosDisponiveis());
                 
-               
-                quadrasAlocadas.getQuadra(resposta).reservarHorario(LocalDate.of(2024, 06, 13),"08:00 - 09:00");
+                Agendas agenda = quadrasAlocadas.getQuadra(resposta).getAgenda();
+                quadrasAlocadas.getQuadra(resposta).getAgenda().reservaHorario(LocalDate.of(2024, 06, 13), "08:00 - 09:00");
+                quadrasAlocadas.getQuadra(resposta).getAgenda().reservaHorario(LocalDate.of(2024, 06, 13), "10:00 - 11:00");
+
                 //aluguel.Alugar(Cliente,quadras.Alocadas.getQ);
                 view.exibirMensagem(quadrasAlocadas.getQuadra(resposta).getNome() + "Alugada em ");
                 view.exibirMensagem(quadrasAlocadas.getQuadra(resposta).getAgenda().getHorariosReservados());
-                view.exibirMensagem(quadrasAlocadas.getQuadra(resposta).getAgenda().getHorariosDisponiveis());
-                
-                cliente.fazerAluguel(quadrasAlocadas.getQuadra(resposta).getNome(), "08:00");
-                
             }
         }
-        return false; // Não voltar ao menu principal
+        return false; 
     }
    
 }
