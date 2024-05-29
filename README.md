@@ -1,4 +1,4 @@
-<h1> JogaYJoga <h1> 
+# JogaYJoga  ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/matteovar/JogaYJoga/.github%2Fworkflows%2Fmaven.yml) 
 
 <h1>Integrantes </h1>
 
@@ -11,9 +11,7 @@
 <p>João Vitor Tortorello 10402674 <br>
   Trabalhou em: Operação Cliente, Model Cliente, Model Locador, Model Pessoa<p>
 
-<p>Intruções de compilção </p>
-
-<p> Foi utilizado o Maven para a realização de testes do projeto. </p>
+Em src/main/java se encontra o código fonte, e em src/test se encontram os testes automatizados que são executados pelo Maven.
 
 
 
