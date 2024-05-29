@@ -1,4 +1,4 @@
-<h1> JOGA Y JOGA <h1> 
+<h1> JogaYJoga <h1> 
 
 <h1>Integrantes </h1>
 
