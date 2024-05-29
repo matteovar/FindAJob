@@ -13,7 +13,7 @@
 
 <p>Intruções de compilção </p>
 
-
+<p> Foi utilizado o Maven para a realização de testes do projeto. </p>
 
 
 
